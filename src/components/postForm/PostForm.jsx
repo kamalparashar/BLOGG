@@ -110,7 +110,7 @@ function PostForm({ post }) {
           label="Featured Image :"
           type="file"
           className="mb-4"
-          accept="image/png, image/jpg, image/jpeg, image/gif"
+          accept="image/png, image/jpg, image/jpeg, image/gif, image/webp"
           {...register("image", { required: !post })}
         />
         {post && (
@@ -132,7 +132,7 @@ function PostForm({ post }) {
         <Button
           type="submit"
           bgColor={post ? "bg-green-500" : undefined}
-          className="w-full hover:bg-blue-500"
+          className={post ? "w-full hover:bg-green-900" : "w-full hover:bg-blue-500 active:bg-blue-900"}
           children={post ? "Update" : "Submit"}
         />
       </div>
