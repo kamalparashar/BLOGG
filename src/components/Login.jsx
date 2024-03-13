@@ -30,7 +30,7 @@ function Login() {
   return (
     <div className=" py-8 flex items-center justify-center w-full">
       <div
-        className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10`}
+        className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10 sm:max-w-full`}
       >
         <div className="mb-2 flex justify-center">
           <span className="inline-block">
