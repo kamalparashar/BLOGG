@@ -46,13 +46,14 @@ function Header() {
             </Link>
           </div>
         </nav>
+
         <ul className='flex ml-auto float-right'>
           {navItems.map((item) =>
             item.active ? (
               <li key={item.name}>
                 <button
                 onClick={()=> navigate(item.slug)}
-                className='text-xl font-semibold inline-block px-3 py-2 duration-150 hover:bg-blue-100 rounded-full sm:p-2 sm:text-base sm:hover:bg-transparent sm:rounded-none sm:hover:underline'
+                className='text-xl font-semibold inline-block px-3 py-2 duration-150 hover:bg-blue-100 rounded-full sm:px-2 sm:text-base sm:hover:bg-transparent sm:rounded-none sm:hover:underline'
                 >
                   <span className="whitespace-nowrap">{item.name}</span>
                 </button>
