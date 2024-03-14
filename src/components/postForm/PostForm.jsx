@@ -54,6 +54,7 @@ function PostForm({ post }) {
           navigate(`/post/${dbPost.$id}`)
         }
         else{
+          await appwriteService.deleteFile(post.FeaturedImage);
           console.log("NO dbPost id created:: issue in createPost");
         }
       }
