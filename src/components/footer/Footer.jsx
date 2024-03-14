@@ -13,7 +13,7 @@ function Footer() {
                 <Logo width="100px" />
               </div>
               <div>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-gray-900">
                   &copy; Copyright 2024. All Rights Reserved.
                 </p>
               </div>

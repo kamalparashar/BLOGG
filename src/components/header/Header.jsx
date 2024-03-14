@@ -38,9 +38,9 @@ function Header() {
 
   return (
     <header className='py-3 shadow bg-gray-500'>
-      <Container className={` mx-1 max-w-full flex justify-end`}>
+      <Container className={`mx-0 max-w-full flex justify-end`}>
         <nav className="flex">
-          <div className="mr-4 sm:mr-2">
+          <div className="mr-4 sm:mr-0.5">
             <Link to="/">
               <Logo />
             </Link>
@@ -52,9 +52,9 @@ function Header() {
               <li key={item.name}>
                 <button
                 onClick={()=> navigate(item.slug)}
-                className=' text-xl font-semibold inline-block pl-6 py-2 duration-200 hover:bg-blue-100 rounded-full'
+                className='text-xl font-semibold inline-block px-3 py-2 duration-150 hover:bg-blue-100 rounded-full sm:p-2 sm:text-base sm:hover:bg-transparent sm:rounded-none sm:hover:underline'
                 >
-                  {item.name}
+                  <span className="whitespace-nowrap">{item.name}</span>
                 </button>
               </li>
             ) : null

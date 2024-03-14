@@ -51,7 +51,7 @@ export default function Post() {
                         className="rounded-xl"
                     />
                     {isAuthor && (
-                        <div className="absolute right-6 top-6">
+                        <div className="absolute right-6 top-6 sm:top-2 sm:right-2">
                             <Link to={`/edit-post/${post.$id}`}>
                                 <Button bgColor="bg-green-600" className="mr-3 hover:bg-green-400 active:bg-green-900">
                                     Edit
