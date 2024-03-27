@@ -8,7 +8,7 @@ const initialState = {
         content: '',
         status: '',
         FeaturedImage: '',
-        
+        userId: '',
     }]
 }
 
@@ -23,6 +23,7 @@ export const postSlice = createSlice({
                 slug:action.payload.slug,
                 content:action.payload.content,
                 FeaturedImage:action.payload.FeaturedImage,
+                userId:action.payload.userId,
             }
             state.posts.push(post)
         },
