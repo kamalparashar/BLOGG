@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import { useDispatch, useSelector} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import authService from './appwrite/auth';
 import { login, logout } from './store/authSlice';
 import {Header, Footer} from './components';
-import { Outlet, useSearchParams } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import { addPost } from './store/postsSlice';
 import appwriteService from './appwrite/config';
 
@@ -12,7 +12,7 @@ function App() {
   
   const [loading, setLoading] = useState(true)
   const dispatch = useDispatch()
-  
+  const authStatus = useSelector(state=>state.auth.status);
   useEffect(()=>{
     authService.getCurrentUser()
     .then((userData) => {
@@ -48,7 +48,7 @@ function App() {
   <div className='min-h-fit flex flex-wrap content-between bg-gray-400'>
     <div className='w-full block'>
       <Header />
-      <main className='min-h-screen'>
+      <main className='min-h-screen font-semibold md:text-lg lg:text-xl'>
         <Outlet />
       </main>
       <Footer />
