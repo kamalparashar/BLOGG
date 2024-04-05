@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import appwriteService from "../../appwrite/config";
 import { useDispatch, useSelector } from "react-redux";
 import { addPost, editPost } from "../../store/postsSlice";
+import Compressor from 'compressorjs';
 
 function PostForm({ post }) {
   const { register, handleSubmit, watch, setValue, getValues, control } =
@@ -20,8 +21,32 @@ function PostForm({ post }) {
   const navigate = useNavigate()
   const userData = useSelector((state) => state.auth.userData)
   const dispatch = useDispatch()
-  
+
+  const compressImage = async (file) => {
+    try {
+      const compressedBlob = await new Promise((resolve, reject) => {
+        new Compressor(file, {
+          quality: 0.8, // Adjust the desired image quality (0.0 - 1.0)
+          maxWidth: 800, // Adjust the maximum width of the compressed image
+          maxHeight: 800, // Adjust the maximum height of the compressed image
+          mimeType: "image/jpeg", // Specify the output image format
+          success(result) {
+            resolve(result);
+          },
+          error(error) {
+            reject(error);
+          },
+        });
+      });
+      return new File([compressedBlob], file.name.split(".")[0], { lastModified: new Date().getTime(), type: compressedBlob.type })
+    }
+    catch(error){
+      console.log("error in compressing image: ", error);
+    }
+  }
+
   const submit = async (data) => {
+    console.log("data: ",data)
     if (post) {
       const file = data.image[0]
         ? await appwriteService.uploadFile(data.image[0])
@@ -41,8 +66,8 @@ function PostForm({ post }) {
       }
     }
     else {
-      const file = await appwriteService.uploadFile(data.image[0]);
-
+      const compressedImage = await compressImage(data.image[0]);
+      const file = await appwriteService.uploadFile(compressedImage);
       if (file) {
         data.FeaturedImage = file.$id;
         const dbPost = await appwriteService.createPost({
